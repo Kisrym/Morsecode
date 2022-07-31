@@ -1,4 +1,13 @@
-def morsecode(text, code="code"):
+def morsecode(text, decode = False):
+	"""Codifica/decodifica código morse
+
+	Args:
+		text (str): Texto que vai ser modificado.
+		decode (bool, opcional): Escolhe se você vai decodificar ou não. Default: False
+
+	Returns:
+		str: Texto modificado.
+	"""
 	morse_code = {
 	"a" : ".-",
 	"b":"-...",
@@ -29,13 +38,13 @@ def morsecode(text, code="code"):
 	" ": "/"
 	}
 	letters = []
-	if code == "code":
+	if decode == False:
 		for letter in text.lower():
 			for key, value in morse_code.items():
 				if letter == key:
 					letters.append(value)
 		return " ".join(letters)
-	elif code == "decode":
+	elif decode == True:
 		text = text.split()
 		for letter in text:
 			for key, value in morse_code.items():
